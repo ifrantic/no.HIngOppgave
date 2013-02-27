@@ -1,10 +1,10 @@
 ----------------------------------------------------------------
-Sat Feb 23 15:02:13 CET 2013:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-013d-075c-767c-00000aa6eb30 
-on database directory G:\Users\knutInge\workspace\HiOA_Database\data\DerbyDB  with class loader sun.misc.Launcher$AppClassLoader@79fb80c9 
-Loaded from file:/G:/Users/knutInge/workspace/HiOA_Database/lib/derby.jar
+Wed Feb 27 20:33:28 CET 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-013d-1d25-2db3-00000aa5d8d0 
+on database directory C:\Users\KnutInge\git\no.apto.git\HiOA_Database\data\DerbyDB  with class loader sun.misc.Launcher$AppClassLoader@7e6a60d5 
+Loaded from file:/C:/Users/KnutInge/git/no.apto.git/HiOA_Database/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.7.0_13-b20
-user.dir=G:\Users\knutInge\workspace\HiOA_Database
+user.dir=C:\Users\KnutInge\git\no.apto.git\HiOA_Database
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

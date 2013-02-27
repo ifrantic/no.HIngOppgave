@@ -31,6 +31,8 @@ public class DerbySQLMain {
 	"Mobil int ,"+
 	"SistEndret timestamp )";
 		
+		private static final String q3="select * from MAS120_EMPLOYEE_TAB";
+		
 		public static void main(String[] args) throws SQLException {
 			
 			ConnectionManager.getInstance().setDBType(DBType.DERBYDB);//lager referanse til tilkoblingsmanager og setter database til derby
@@ -69,14 +71,14 @@ public class DerbySQLMain {
 			try(
 				//	Connection conn=DBUtil.getConnection(DBType.MSSQLDB);
 					Statement stmt=conn.createStatement();
-					ResultSet rs2=stmt.executeQuery(sql);
+					ResultSet rs2=stmt.executeQuery(q3);
 					){
-				System.out.println("Person tabell:");
+				System.out.println("MAS120_EMPLOYEE_TAB tabell:");
 				while (rs2.next()) {
 					StringBuffer bf=new StringBuffer();
-					bf.append(rs2.getInt("PersonId") + ": ");
-					bf.append(rs2.getString("Fornavn") + ": ");
-					bf.append(rs2.getString("Mail") + ": ");
+					
+					bf.append(rs2.getString("CLIENT_ID") + ": ");
+					bf.append(rs2.getString("COMPANY_ID") + ": ");
 					
 					System.out.println(bf.toString());
 				}
