@@ -1,5 +1,7 @@
 package no.apto.java.db.derbydb;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
@@ -12,15 +14,17 @@ import no.apto.java.db.DBType;
 import no.apto.java.db.beans.Person;
 import no.apto.java.db.mssqldb.table.PersonManager;
 import no.apto.java.util.InputHelper;
+import no.apto.java.util.ReadFileToString;
 
 public class DerbySQLMain {
 
 	
-	private static Connection conn= null;
-		//Denne strengen er kun for derby
-		private static final String derbyQ1="CREATE TABLE CARS(ID INT PRIMARY KEY,"
-                + "NAME VARCHAR(30), PRICE INT)";
-		
+	private static Connection conn= null;//For tilkobling til database
+	
+	private static Path scriptCreateMAS120_EMPLOYEE_TAB=Paths.get("schema/DerbyPersonTest.sql");//finner sti til scrip for opprettelse av tabellen
+
+	private static String[] tableTypes={"TABLE"};//Tabell av String, brukes når man skal finne type tabeller som er opprettet
+	private static boolean tabellFinnes=false;//	brukes for å sjekke om tabell finnes eller ikke
 		private static final String CreateDerbyPersonTable=
 				"CREATE TABLE Person( "+
 	"PersonId int primary key NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),"+
@@ -31,25 +35,41 @@ public class DerbySQLMain {
 	"Mobil int ,"+
 	"SistEndret timestamp )";
 		
+		private static String createMAS120_EMPLOYEE_TAB="";
+		private static String MAS120_EMPLOYEE_TAB="MAS120_EMPLOYEE_TAB";
+		
 		private static final String q3="select * from MAS120_EMPLOYEE_TAB";
 		
 		public static void main(String[] args) throws SQLException {
 			
 			ConnectionManager.getInstance().setDBType(DBType.DERBYDB);//lager referanse til tilkoblingsmanager og setter database til derby
 			conn= ConnectionManager.getInstance().getConnection();//referanse til databasetilkobling
-			ResultSet rs=null;
+			
+			//les script for opprettelse av tabellen, legg det i en String
+			createMAS120_EMPLOYEE_TAB=ReadFileToString.returnString(scriptCreateMAS120_EMPLOYEE_TAB);
+			
+			
+			ResultSet rs=null; //deklarerer resultset 
 			try(
-				PreparedStatement stmt = conn.prepareStatement(CreateDerbyPersonTable);
+				PreparedStatement stmt = conn.prepareStatement(createMAS120_EMPLOYEE_TAB);
 					) {
-				DatabaseMetaData dbmd = ConnectionManager.getInstance().getConnection().getMetaData();//Finner metadata fra databasen, 
+				DatabaseMetaData dbmd = conn.getMetaData();//Finner metadata fra databasen, 
 				
-				rs = dbmd.getTables(null, "%", "Person", null);//ser om tabell Person er laget
-				if(!rs.next())//Hvis tabellen ikke er laget
+				rs = dbmd.getTables(null, "%", "%", tableTypes);//ser hvilke tabeller som er opprettet
+				while (rs.next()) {
+					if(rs.getString("TABLE_NAME").compareTo(MAS120_EMPLOYEE_TAB)==0){//sjekker om MAS120_EMPLOYEE_TAB finnes i tabellen med tabellnavn
+						tabellFinnes=true;
+						
+					}
+				}
+				if(tabellFinnes==false)//Hvis tabellen ikke er laget
 				{
+
+					System.out.println(createMAS120_EMPLOYEE_TAB);
 					int oppdatert=0;
-				oppdatert = stmt.executeUpdate();
+				oppdatert = stmt.executeUpdate();//oppretter tabellen MAS120_EMPLOYEE_TAB
 				if (oppdatert==1) {
-					System.out.println("opprettet tabell Person");//Eksekverer query for å opprette tabellen Person
+					System.out.println("opprettet tabell MAS120_EMPLOYEE_TAB");//Eksekvert query for å opprette tabellen MAS120_EMPLOYEE_TAB
 				}else{
 					System.out.println("Intet opprettet");
 				}
