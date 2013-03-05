@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="C:/Program Files/Java/Microsoft JDBC Driver 4.0 for SQL Server/sqljdbc_4.0"/>
 	<classpathentry kind="lib" path="lib/hsqldb.jar"/>
 	<classpathentry kind="lib" path="lib/derby.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.2.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

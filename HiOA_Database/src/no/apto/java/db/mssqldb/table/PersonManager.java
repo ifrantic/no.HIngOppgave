@@ -1,6 +1,7 @@
 package no.apto.java.db.mssqldb.table;
 
 import java.sql.Connection;
+
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +12,10 @@ import no.apto.java.db.ConnectionManager;
 import no.apto.java.db.DBType;
 import no.apto.java.db.DBUtil;
 import no.apto.java.db.beans.Person;
+import no.apto.java.util.WriteObjectToJsonFile;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class PersonManager {
 
@@ -186,4 +191,8 @@ public class PersonManager {
 		return false;
 		}
 	}
+
+
+
+
 }
