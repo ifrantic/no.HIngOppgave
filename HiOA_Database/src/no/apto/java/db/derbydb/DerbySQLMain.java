@@ -12,7 +12,6 @@ import java.sql.Statement;
 import no.apto.java.db.ConnectionManager;
 import no.apto.java.db.DBType;
 import no.apto.java.db.beans.Person;
-import no.apto.java.db.mssqldb.table.PersonManager;
 import no.apto.java.util.InputHelper;
 import no.apto.java.util.ReadFileToString;
 

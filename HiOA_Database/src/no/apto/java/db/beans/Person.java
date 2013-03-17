@@ -1,5 +1,5 @@
 package no.apto.java.db.beans;
-
+//denne er kun for testing, brukes ikke
 import java.io.Serializable;
 import java.sql.Date;
 

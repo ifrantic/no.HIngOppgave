@@ -26,11 +26,12 @@ public class ConnectionManager {
 	private static final String MSSQL_CONN_STRING=//Tilkoblingsstreng for mssql database
 			"jdbc:sqlserver://localhost;databaseName=Personlig;integratedSecurity=true";
 	
-	private static final String DERBY_CONN_STRING=//Tilkoblingsstreng for darby database
+	private static final String DERBY_CONN_STRING=//Tilkoblingsstreng for derby database
 			"jdbc:derby:data/DerbyDB;create=true";
 	
 	
-	private DBType dbType = DBType.DERBYDB;		//type database, velger her hypersqldb database å jobbe mot.
+	//Setter derby som default!
+	private DBType dbType = DBType.DERBYDB;		//type database, velger her DERBY database å jobbe mot.
 	
 	private Connection conn = null;	//setter databasetilkobling til null
 	
@@ -51,7 +52,7 @@ public class ConnectionManager {
 				conn=DriverManager.getConnection(HYPER_CONN_STRING, USERNAME, PASSWORD);
 				return true;
 				
-			case DERBYDB:
+			case DERBYDB://Oppkobling mot Derby database
 				conn=DriverManager.getConnection(DERBY_CONN_STRING, USERNAME, PASSWORD);
 				return true;
 				

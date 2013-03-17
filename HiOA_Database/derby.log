@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Sun Mar 03 18:26:10 CET 2013:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-013d-314a-126c-00000aa4b578 
+Sun Mar 17 14:20:36 CET 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-013d-7882-4555-00000aa50730 
 on database directory C:\Users\KnutInge\git\no.HIngOppgave\HiOA_Database\data\DerbyDB  with class loader sun.misc.Launcher$AppClassLoader@7e6a60d5 
 Loaded from file:/C:/Users/KnutInge/git/no.HIngOppgave/HiOA_Database/lib/derby.jar
 java.vendor=Oracle Corporation
