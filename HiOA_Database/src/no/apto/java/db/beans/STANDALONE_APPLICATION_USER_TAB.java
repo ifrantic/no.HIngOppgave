@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 public class STANDALONE_APPLICATION_USER_TAB implements Serializable {
 
 	/**
-	 * 
+	 * Denne er ca ferdig.
 	 */
 	private static final long serialVersionUID = 8537460877194842679L;
 	
